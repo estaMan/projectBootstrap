@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reservez</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        background-color: #343a40 !important;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent gray overlay */
+        display: flex;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 1000; /* Make sure it's above other elements */
+        display: none; /* Initially hide the spinner */
+      }
+
+      .spinner-border {
+        width: 50px;
+        height: 50px;
+        color: #bd9615; /* Set the color to your desired color */
+        display: none; /* Initially hide the spinner */
+        justify-content: center;
+        align-items: center;
+        margin-top: 350px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar-expand-lg sticky-top navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+          <img
+            style="border-radius: 50%"
+            src="images/logo4.png"
+            alt=""
+            width="90"
+            height="90"
+            srcset=""
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <h2 class="active">Acceuil</h2>
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="nosSite.html"
+                ><h2 class="active">Nos Sites</h2>
+                <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallerie.html"
+                ><h2 class="active">Gallery</h2>
+                <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html"
+                ><h2 class="active">Contact</h2>
+                <span class="sr-only">(current)</span></a
+              >
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+            <!-- Place the "Reserver" button here -->
+            <a
+              class="btn btn-outline ml-2 logoColor hoverReserve"
+              href="reservez.html"
+              ><h3>Reserver</h3></a
+            >
+          </form>
+        </div>
+      </nav>
+      <div class="row mb-3">
+        <img
+          src="images/logoFacebook.png"
+          alt=""
+          style="width: 50%; height: 250px"
+        />
+        <img src="images/logo5.png" alt="" style="width: 50%; height: 250px" />
+      </div>
+
+      <!-- Overlay for spinner -->
+      <div class="overlay" id="overlay">
+        <center><div class="spinner-border text-warning"></div></center>
+      </div>
+
+      <!-- Navigation bar -->
+
+      <br />
+
+      <!-- Reservation Form -->
+      <center>
+        <div
+          class="col-md-6 reservation-form"
+          style="border: #bd9615 3px solid; border-radius: 15px"
+        >
+          <h2 class="roundesTitle">Reservation</h2>
+          <form id="reservation-form">
+            <div class="form-group roundesTitle">
+              <label for="name">Nom & Prénom:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                required
+              />
+            </div>
+            <div class="form-group roundesTitle">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="form-group roundesTitle">
+              <label for="tour">Choisissez un Tour:</label>
+              <select class="form-control" id="tour" name="tour" required>
+                <option value="tour1">Tour 1</option>
+                <option value="tour2">Tour 2</option>
+                <option value="tour3">Tour 3</option>
+                <!-- Add more tour options as needed -->
+              </select>
+            </div>
+            <div class="form-group roundesTitle">
+              <label for="date">Date:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="date"
+                name="date"
+                required
+              />
+            </div>
+            <div class="form-group roundesTitle">
+              <label for="number">Nombre de Personnes:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="number"
+                name="number"
+                required
+              />
+            </div>
+            <button
+              type="button"
+              onclick="sendMessage()"
+              class="btn btn-primary"
+            >
+              Confirmer la Reservation
+            </button>
+          </form>
+        </div>
+      </center>
+
+      <!-- Confirmation Modal -->
+      <div class="modal" tabindex="-1" role="dialog" id="successModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="color: #bd9615">S & A TOURS</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Vos données sont transférées, Merci. On va vous contacter
+              prochainement pour la Confirmation !!
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Fermer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JavaScript Dependencies -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+      <!-- Custom JavaScript -->
+      <script>
+        function sendMessage() {
+          $("#overlay").show();
+          setTimeout(function () {
+            $("#overlay").hide();
+
+            const botToken = "6698459372:AAF49HWt_UT8yrrjoCA90-UcjgYh_KkGHq8";
+            const chatId = "-4069138707"; // Replace with the actual chat ID
+
+            const name = $("#name").val();
+            const email = $("#email").val();
+            const tour = $("#tour").val();
+            const date = $("#date").val();
+            const number = $("#number").val();
+
+            // Replace 'YOUR_MESSAGE_TEXT' with the text you want to send
+
+            const formattedMessage = `Hello From S&A TOURS \n\nName: ${name}\nEmail: ${email}\n\nTour:\n${tour}\nDate: ${date}\n\nNumber:\n${number}`;
+            // Send message using AJAX
+            $.ajax({
+              url: `https://api.telegram.org/bot${botToken}/sendMessage`,
+              method: "POST",
+              data: {
+                chat_id: chatId,
+                text: formattedMessage,
+              },
+              success: function (response) {
+                console.log(response);
+              },
+              error: function (error) {
+                console.error(error);
+                alert("Error sending message.");
+              },
+            });
+
+            $("#successModal").modal("show");
+            // Reset the form
+            $("#reservation-form")[0].reset();
+          }, 5000); // Show spinner for 5 seconds
+        }
+
+        $("#successModal").on("hidden.bs.modal", function () {
+          $("#overlay").hide();
+          $("#reservation-form")[0].reset();
+        });
+      </script>
+
+      <br />
+
+      <!-- Footer -->
+      <hr class="featurette-divider" />
+      <footer>
+        <table class="tableFooter">
+          <tr>
+            <td width="10%">
+              <img
+                style="border-radius: 50%"
+                src="images/logo4.png"
+                alt=""
+                width="50"
+                height="50"
+                srcset=""
+              />
+            </td>
+            <td width="45%" style="vertical-align: text-top">
+              <center>
+                <h6 class="indexTitle roundesTitle">Rejoignez nous</h6>
+              </center>
+              <h6 class="indexTitle roundesTitle">
+                <img
+                  src="images/carte.png"
+                  alt="carte"
+                  width="30"
+                  height="30"
+                />
+                123, Rue des Palmiers Tozeur 2200 Tunisie
+              </h6>
+              <h6 class="roundesTitle">
+                <img
+                  src="images/appel.png"
+                  alt="appel"
+                  width="30"
+                  height="30"
+                />
+                +216 76 210 210 /+216 55 000 000
+              </h6>
+
+              <h6 class="roundesTitle">
+                <img
+                  src="images/email.png"
+                  alt="email"
+                  width="30"
+                  height="30"
+                />
+                S&Atours@contact.tn
+              </h6>
+            </td>
+            <td width="45%" style="vertical-align: text-top">
+              <center>
+                <h6 class="indexTitle roundesTitle">contactez nous</h6>
+              </center>
+
+              <h6 class="roundesTitle">
+                <a href="https://www.facebook.com">
+                  <img
+                    src="images/facebook.png"
+                    alt="facebook"
+                    width="30"
+                    height="30"
+                  />
+                </a>
+                www.facebook.com/cyrineAliTours
+              </h6>
+
+              <h6 class="roundesTitle">
+                <a href="https://www.instagram.com" class="roundesTitle">
+                  <img
+                    src="images/instagram.png"
+                    alt="instagram"
+                    width="30"
+                    height="30"
+                  />
+                  www.instagram.com/cyrineAliTours
+                </a>
+              </h6>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <center>
+                <h6 class="roundesTitle">
+                  All rights reserved © [2023] S & A TOURS
+                </h6>
+                <p class="roundesTitle" class="float-right">
+                  <a href="#">Back to top</a>
+                </p>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </footer>
+      <hr class="featurette-divider" />
+    </div>
+  </body>
+</html>

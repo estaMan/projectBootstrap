@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- JavaScripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+      body.dark-theme {
+        background-color: #343a40;
+        color: white;
+      }
+
+      body.light-theme {
+        background-color: #fff;
+        color: #343a40;
+      }
+
+      .video-container {
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        padding-left: 15px;
+        padding-right: 15.5px;
+      }
+
+      .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .roundesTitle {
+        color: white;
+      }
+
+      .themeD {
+        background-color: #343a40;
+      }
+
+      .themeD .navbar {
+        background-color: #343a40;
+        color: white;
+      }
+
+      .themeD .navbar-toggler-icon {
+        background-color: white;
+      }
+
+      .light-theme .navbar {
+        background-color: #fff !important;
+        color: #343a40 !important;
+      }
+
+      .light-theme .navbar-toggler-icon {
+        background-color: #343a40 !important;
+      }
+
+      .light-theme .card,
+      .light-theme .card-header,
+      .light-theme .card-body,
+      .light-theme .btn-outline-secondary {
+        background-color: #fff !important;
+        color: #343a40 !important;
+        border-color: #343a40 !important;
+      }
+
+      .light-theme .navbar-nav .nav-item .nav-link {
+        color: #343a40 !important;
+      }
+    </style>
+
+    <script>
+      $(document).ready(function () {
+        // Set the default theme
+        setDarkTheme();
+
+        // Toggle theme on click
+        $(".fa-sun").on("click", function () {
+          setLightTheme();
+        });
+
+        $(".fa-moon").on("click", function () {
+          setDarkTheme();
+        });
+
+        // Function to set light theme
+        function setLightTheme() {
+          $("body").removeClass("dark-theme").addClass("light-theme");
+        }
+
+        // Function to set dark theme
+        function setDarkTheme() {
+          $("body").removeClass("light-theme").addClass("dark-theme");
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar-expand-lg sticky-top navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+          <img
+            style="border-radius: 50%"
+            src="images/logo4.png"
+            alt=""
+            width="90"
+            height="90"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">
+                <h2 class="active">Home</h2>
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="nosSite.html">
+                <h2 class="active">Our Sites</h2>
+                <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallerie.html">
+                <h2 class="active">Gallery</h2>
+                <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">
+                <h2 class="active">Contact</h2>
+                <span class="sr-only">(current)</span></a
+              >
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <div class="theme-switch">
+              <i class="fas fa-sun" style="cursor: pointer; color: #bd9615"></i>
+              <i
+                class="fas fa-moon"
+                style="cursor: pointer; color: #bd9615"
+              ></i>
+            </div>
+            <a
+              class="btn btn-outline ml-2 logoColor hoverReserve"
+              href="reservez.html"
+              ><h3>Reserve</h3></a
+            >
+          </form>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="video-container">
+          <video
+            class="lazyloading"
+            preload="auto"
+            loop="loop"
+            muted="muted"
+            autoplay="autoplay"
+            data-src="https://diarhabibi.com/vid/DiarHabib%284%29.mp4"
+            src="https://diarhabibi.com/vid/DiarHabib%284%29.mp4"
+          ></video>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-6">
+          <div class="card themeD">
+            <center>
+              <h1 class="card-header mt-4 logoColor">Welcome to S & A TOURS</h1>
+            </center>
+            <div class="card-body themeD">
+              <center>
+                <h2 class="card-title roundesTitle">
+                  Your Gateway to Adventure in Southern Tunisia
+                </h2>
+              </center>
+              <center>
+                <h2 class="dark-theme">Why Choose S & A TOURS?</h2>
+              </center>
+              <div class="accordion" id="accordionExample">
+                <div class="card themeD">
+                  <div class="card-header" id="headingOne">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-toggle="collapse"
+                      data-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      <h5>Local Expertise</h5>
+                    </button>
+                  </div>
+                  <div
+                    id="collapseOne"
+                    class="collapse show"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordionExample"
+                  >
+                    <div class="card-body roundesTitle">
+                      Our team consists of local guides and experts who know the
+                      region like no one else.
+                    </div>
+                  </div>
+                </div>
+                <div class="card themeD">
+                  <div class="card-header" id="headingTwo">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-toggle="collapse"
+                      data-target="#collapseTwo"
+                      aria-expanded="true"
+                      aria-controls="collapseTwo"
+                    >
+                      <h5>Personalized Service</h5>
+                    </button>
+                  </div>
+                  <div
+                    id="collapseTwo"
+                    class="collapse"
+                    aria-labelledby="headingTwo"
+                    data-parent="#accordionExample"
+                  >
+                    <div class="card-body roundesTitle">
+                      We take the time to understand your needs and customize
+                      each trip accordingly.
+                    </div>
+                  </div>
+                </div>
+                <div class="card themeD">
+                  <div class="card-header" id="headingThree">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-toggle="collapse"
+                      data-target="#collapseThree"
+                      aria-expanded="true"
+                      aria-controls="collapseThree"
+                    >
+                      <h5>Environmental Respect</h5>
+                    </button>
+                  </div>
+                  <div
+                    id="collapseThree"
+                    class="collapse"
+                    aria-labelledby="headingThree"
+                    data-parent="#accordionExample"
+                  >
+                    <div class="card-body roundesTitle">
+                      We are committed to minimizing our impact on the
+                      environment and preserving the natural beauty of Southern
+                      Tunisia.
+                    </div>
+                  </div>
+                </div>
+                <div class="card themeD">
+                  <div class="card-header" id="headingFour">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      data-toggle="collapse"
+                      data-target="#collapseFour"
+                      aria-expanded="true"
+                      aria-controls="collapseFour"
+                    >
+                      <h5>Community Engagement</h5>
+                    </button>
+                  </div>
+                  <div
+                    id="collapseFour"
+                    class="collapse"
+                    aria-labelledby="headingFour"
+                    data-parent="#accordionExample"
+                  >
+                    <div class="card-body roundesTitle">
+                      We support local communities by contributing to their
+                      economic and social development.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-12">
+              <img
+                src="images/anantara.jpg"
+                alt=""
+                style="width: 100%; height: 400px"
+              />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-4">
+              <img
+                src="images/ac1.jpg"
+                alt=""
+                style="width: 100%; height: 250px"
+              />
+            </div>
+            <div class="col-4">
+              <img
+                src="images/ac10.jpg"
+                alt=""
+                style="width: 100%; height: 250px"
+              />
+            </div>
+            <div class="col-4">
+              <img
+                src="images/ac12.jpg"
+                alt=""
+                style="width: 100%; height: 250px"
+              />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-4">
+              <img
+                src="images/ac13.jpg"
+                alt=""
+                style="width: 100%; height: 250px"
+              />
+            </div>
+            <div class="col-4">
+              <img
+                src="images/ac15.jpg"
+                alt=""
+                style="width: 100%; height: 250px"
+              />
+            </div>
+            <div class="col-4">
+              <img
+                src="images/ac14.jpg"
+                alt=""
+                style="width: 100%; height: 250px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="featurette-divider" />
+    <footer>
+      <table class="tableFooter">
+        <tr>
+          <td width="10%">
+            <img
+              style="border-radius: 50%"
+              src="images/logo4.png"
+              alt=""
+              width="50"
+              height="50"
+            />
+          </td>
+          <td width="45%" style="vertical-align: text-top">
+            <center><h6 class="indexTitle roundesTitle">Join Us</h6></center>
+            <h6 class="indexTitle roundesTitle">
+              <img src="images/carte.png" alt="carte" width="30" height="30" />
+              123, Rue des Palmiers Tozeur 2200 Tunisia
+            </h6>
+            <h6 class="roundesTitle">
+              <img src="images/appel.png" alt="appel" width="30" height="30" />
+              +216 76 210 210 /+216 55 000 000
+            </h6>
+            <h6 class="roundesTitle">
+              <img src="images/email.png" alt="email" width="30" height="30" />
+              S&Atours@contact.tn
+            </h6>
+          </td>
+          <td width="45%" style="vertical-align: text-top">
+            <center><h6 class="indexTitle roundesTitle">Contact Us</h6></center>
+            <h6 class="roundesTitle">
+              <a href="https://www.facebook.com">
+                <img
+                  src="images/facebook.png"
+                  alt="facebook"
+                  width="30"
+                  height="30"
+                />
+              </a>
+              www.facebook.com/cyrineAliTours
+            </h6>
+            <h6 class="roundesTitle">
+              <a href="https://www.instagram.com">
+                <img
+                  src="images/instagram.png"
+                  alt="instagram"
+                  width="30"
+                  height="30"
+                />
+                www.instagram.com/cyrineAliTours
+              </a>
+            </h6>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <center>
+              <h6 class="roundesTitle">
+                All rights reserved © [2023] S & A TOURS
+              </h6>
+              <p class="roundesTitle" class="float-right">
+                <a href="#">Back to top</a>
+              </p>
+            </center>
+          </td>
+        </tr>
+      </table>
+    </footer>
+    <hr class="featurette-divider" />
+  </body>
+</html>
